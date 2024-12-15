@@ -11,16 +11,9 @@ contract DeployCheckWithCreate2 is Script {
      */
     function run() external returns (address addr) {
         vm.startBroadcast();
-        // Prepare the bytecode for the CHECK token contract
-        bytes memory bytecode = abi.encodePacked(type(CheckToken).creationCode);
-
-        bytes32 salt = bytes32("Check Token");
-
-        // Deploy the contract using CREATE2
-        assembly {
-            addr := create2(0, add(bytecode, 0x20), mload(bytecode), salt)
-            if iszero(extcodesize(addr)) { revert(0, 0) }
-        }
+        
+        CheckToken checkToken = new CheckToken();
+        addr = address(checkToken);
 
         vm.stopBroadcast();
     }
