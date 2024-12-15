@@ -19,6 +19,3 @@ optimizerSteps = ''
 [rpc_endpoints]
 polygon = "https://polygon-rpc.com"
 sepolia = "https://rpc.sepolia.org"
-
-[dependencies]
-openzeppelin-contracts = { git = "https://github.com/OpenZeppelin/openzeppelin-contracts", version = "5.1.0" }
