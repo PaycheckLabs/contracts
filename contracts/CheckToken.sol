@@ -6,12 +6,21 @@ import {AccessControl} from "@openzeppelin/contracts/access/AccessControl.sol";
 import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import {ERC20Permit} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
 
-contract CheckToken is ERC20, ERC20Permit, AccessControl {
-    constructor(address defaultAdmin)
+/**
+ * @title CheckToken
+ * @dev Implementation of the CheckToken by Paycheck Labs
+ * 
+ * This contract implements the CHECK token - an ERC20 token with permit functionality 
+ * and access control features.
+ *
+ */
+contract CheckToken is ERC20, ERC20Permit {
+
+    uint256 public constant MAX_SUPPLY = 100_000_000_000 * 10**18;
+    constructor()
         ERC20("Check Token", "CHECK")
         ERC20Permit("Check Token")
     {
-        _mint(msg.sender, 100_000_000_000_000_000 * 10 ** decimals());
-        _grantRole(DEFAULT_ADMIN_ROLE, defaultAdmin);
+        _mint(msg.sender, MAX_SUPPLY);
     }
 }
