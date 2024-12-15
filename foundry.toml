@@ -1,0 +1,24 @@
+[profile.default]
+src = 'contracts'
+out = 'out'
+libs = ['lib']
+via_ir = true
+solc_version = '0.8.26'
+evm_version = "cancun"
+
+optimizer_runs = 100000
+fs_permissions = [{ access = "read", path = "./script/deployParameters/"}]
+
+[fmt]
+line_length = 120
+quote_style = 'single'
+
+[profile.lite.optimizer_details.yulDetails]
+optimizerSteps = ''
+
+[rpc_endpoints]
+polygon = "https://polygon-rpc.com"
+sepolia = "https://rpc.sepolia.org"
+
+[dependencies]
+openzeppelin-contracts = { git = "https://github.com/OpenZeppelin/openzeppelin-contracts", version = "5.1.0" }
